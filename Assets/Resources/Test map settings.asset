@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f103c4c9f1bcfe94790dfc7534ba987e, type: 3}
+  m_Name: Test map settings
+  m_EditorClassIdentifier: 
+  _isAutoFillID: 1
+  _tileset:
+  - tileId: 0
+    tilePrefab: {fileID: 2373142007513595956, guid: c9b4b00804a8d1a498dcbd39feab4100, type: 3}
+  - tileId: 1
+    tilePrefab: {fileID: 8565187624728297800, guid: c7d8f5fc41e85ef4796d82a2da2e3f0f, type: 3}
+  - tileId: 2
+    tilePrefab: {fileID: 4911560683335678702, guid: 0cc01899a75723546af2115116feb688, type: 3}
+  - tileId: 3
+    tilePrefab: {fileID: 201479469804542082, guid: 6e4f709046690574db619cf4d99e09ae, type: 3}
+  - tileId: 4
+    tilePrefab: {fileID: 5734108861096544160, guid: 50972404de8f49d4c8800c5906e71645, type: 3}
+  _size: {x: 16, y: 16}
+  _magnitudeMin: 4
+  _magnitudeMax: 20
+  _offsetMin: {x: 0, y: 0}
+  _offsetMax: {x: 100, y: 100}
