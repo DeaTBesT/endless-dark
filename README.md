@@ -6,7 +6,7 @@ My pet project. 2D top-down game like rpg.
 # 🚀Installation
 Last stable build.
 ```
-git clone --release https://github.com/DeaTBesT/endless-dark.git
+git clone --branch release https://github.com/DeaTBesT/endless-dark.git
 ```
 ⚠️The newest unstable build.
 ```
