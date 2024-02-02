@@ -5,12 +5,8 @@ namespace Player
 {
     public class PlayerMove : EntityMove
     {
-        #region [Components]
-        
         private PlayerInput _input;
 
-        #endregion
-    
         public void Initialize(PlayerInput input)
         {
             Initialize();

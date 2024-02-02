@@ -26,8 +26,6 @@ namespace MapGeneration
             public GameObject tilePrefab;
         }
 
-        #region [PublicVars]
-
         public bool GetIsAutoFill => _isAutoFillID;
         public List<SerializedDictionary> GetTileset => _tileset;
 
@@ -40,7 +38,5 @@ namespace MapGeneration
         public Vector2Int GetOffsetMin => _offsetMin;
 
         public Vector2Int GetOffsetMax => _offsetMax;
-
-        #endregion
     }   
 }

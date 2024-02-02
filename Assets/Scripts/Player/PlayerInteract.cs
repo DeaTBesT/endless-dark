@@ -1,38 +1,42 @@
 using UnityEngine;
 
-public class PlayerInteract : EntityInteraction
+namespace Player
 {
-    [SerializeField] private LayerMask _layerMask;
-
-    private Camera _camera;
-
-    public void Initialize(Camera camera)
+    public class PlayerInteract : Base.EntityInteraction
     {
-        _camera = camera;
-    }
+        [SerializeField] private LayerMask _layerMask;
 
-    private void Update()
-    {
-        if ((!isLocalPlayer) || (_camera is null))
+        private Camera _camera;
+
+        public void Initialize(Camera camera)
         {
-            return;
+            _camera = camera;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        private void Update()
         {
-            Vector3 mousePoint = _camera.ScreenToWorldPoint(Input.mousePosition);
-
-            RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero, Mathf.Infinity,
-                _layerMask);
-
-            if (hit.transform is null)
+            if ((!isLocalPlayer) || (_camera is null))
             {
                 return;
             }
 
-            if (hit.transform.TryGetComponent(out DestroyableTile tile))
+            //Rewrite input
+            if (Input.GetMouseButtonDown(0))
             {
-                tile.DestroyTile();
+                Vector3 mousePoint = _camera.ScreenToWorldPoint(Input.mousePosition);
+
+                RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero, Mathf.Infinity,
+                    _layerMask);
+
+                if (hit.transform is null)
+                {
+                    return;
+                }
+
+                if (hit.transform.TryGetComponent(out DestroyableTile tile))
+                {
+                    tile.DestroyTile();
+                }
             }
         }
     }
