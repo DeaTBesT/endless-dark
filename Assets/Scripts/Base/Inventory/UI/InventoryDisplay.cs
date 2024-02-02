@@ -118,7 +118,7 @@ namespace Inventory
 
             clickedSlotUI.ClearSlot();
             clickedSlotUI.GetAssignedInventorySlot.AssignItem(clonedSlot);
-            clickedSlotUI.UpdateUISlot();
+            clickedSlotUI.UpdateUISlot();   
         }
     }
 }

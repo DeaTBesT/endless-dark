@@ -1,11 +1,10 @@
+using Interfaces;
 using UnityEngine;
 
 namespace Player
 {
-    public class PlayerInteract : Base.EntityInteraction
+    public class PlayerInteraction : Base.EntityInteraction
     {
-        [SerializeField] private LayerMask _layerMask;
-
         private Camera _camera;
 
         public void Initialize(Camera camera)
@@ -26,18 +25,29 @@ namespace Player
                 Vector3 mousePoint = _camera.ScreenToWorldPoint(Input.mousePosition);
 
                 RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero, Mathf.Infinity,
-                    _layerMask);
+                    _interactingLayer);
 
                 if (hit.transform is null)
                 {
                     return;
                 }
 
-                if (hit.transform.TryGetComponent(out DestroyableTile tile))
+                if (hit.transform.TryGetComponent(out IInteractable interactable))
                 {
-                    tile.DestroyTile();
+                    StartInteraction(interactable);
                 }
             }
+        }
+
+        protected override void StartInteraction(IInteractable interactable)
+        {
+            interactable.Interact(this, out bool isSuccessful);
+            IsInteracting = isSuccessful;
+        }
+
+        private void EndInteraction()
+        {
+            IsInteracting = false;
         }
     }
 }

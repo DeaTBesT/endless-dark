@@ -678,8 +678,8 @@ MonoBehaviour:
   syncInterval: 0
   _playerMove: {fileID: 6015885288319513549}
   _playerCamera: {fileID: 2672549678242297900}
-  _playerInteract: {fileID: 5398606256636525385}
-  _playerInventory: {fileID: 6678018333373936211}
+  playerInteraction: {fileID: 5398606256636525385}
+  playerInventoryHolder: {fileID: 6678018333373936211}
   _camera: {fileID: 7019614414761738679}
 --- !u!1 &731096968559698543
 GameObject:
@@ -981,7 +981,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
 --- !u!114 &8264348378882728912
 MonoBehaviour:
@@ -1087,9 +1087,10 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  _layerMask:
+  _interactingLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 64
+  _interactingDistance: 2
 --- !u!114 &6678018333373936211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,8 +1106,11 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  _inventorySize: 9
-  _inventorySystem:
+  _inventorySize: 1
+  _primaryInventorySystem:
+    _inventorySlots: []
+  _secondaryInventorySize: 27
+  _secondaryInventorySystem:
     _inventorySlots: []
 --- !u!1 &6510189667956486557
 GameObject:

@@ -16,10 +16,10 @@ namespace Inventory
         public InventorySlot GetAssignedInventorySlot => _assignedInventorySlot;
         public InventoryDisplay ParentDisplay { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             ClearSlot();
-
+            
             TryGetComponent(out Button _button);
             _button?.onClick.AddListener(OnUISlotClick);
 
@@ -39,7 +39,6 @@ namespace Inventory
             {
                 _itemSprite.sprite = slot.GetItemData.GetIcon;
                 _itemSprite.color = Color.white;
-
                 _textItemAmount.text = slot.GetStackSize > 1 ? slot.GetStackSize.ToString() : string.Empty;
             }
             else
@@ -52,13 +51,13 @@ namespace Inventory
 
         public void UpdateUISlot()
         {
-            if (_assignedInventorySlot is not null)
+            if (_assignedInventorySlot != null)
             {
                 UpdateUISlot(_assignedInventorySlot);
             }
         }
 
-        public void ClearSlot()
+        public void ClearSlot()//Bug
         {
             _assignedInventorySlot?.ClearSlot();
             _itemSprite.sprite = null;

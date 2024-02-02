@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using Inventory;
 using UnityEngine;
@@ -8,30 +8,37 @@ namespace Player
     public class DynamicInventoryDisplay : InventoryDisplay
     {
         [SerializeField] protected InventorySlotUI _slotUIPrefab;
-        
-        protected override void Start()
-        {
-            base.Start();
-        }
 
+        private void OnDisable()
+        {
+            if (_inventorySystem is not null)
+            {
+                _inventorySystem.OnInventorySlotChanged -= UpdateSlot;
+            }
+        }
+        
         public void RefreshDynanicInventory(InventorySystem inventorySystem)
         {
             ClearSlots();
+            
             _inventorySystem = inventorySystem;
-            AssignSlot(_inventorySystem);
+            if (_inventorySystem is not null)
+            {
+                _inventorySystem.OnInventorySlotChanged += UpdateSlot;
+            }
+            
+            AssignSlot(inventorySystem);
         }
         
         protected override void AssignSlot(InventorySystem inventoryToDisplay)
         {
-            ClearSlots();
-
-            _slotDictionary = new();
+            _slotDictionary = new Dictionary<InventorySlotUI, InventorySlot>();
 
             if (inventoryToDisplay is null)
             {
                 return;
             }
-
+ 
             for (int i = 0; i < inventoryToDisplay.GetInventorySize; i++)
             {
                 var uiSlot = Instantiate(_slotUIPrefab, transform);
@@ -47,7 +54,7 @@ namespace Player
             {
                 Destroy(item.gameObject);
             }
-
+            
             if (_slotDictionary is not null)
             {
                 _slotDictionary.Clear();

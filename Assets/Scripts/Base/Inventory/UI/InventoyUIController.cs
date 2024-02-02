@@ -26,11 +26,6 @@ namespace Inventory
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                DisplayInventory(new InventorySystem(Random.Range(20, 30)));
-            }
-
             if ((_inventoryDisplay.gameObject.activeInHierarchy) &&
                 (Input.GetKeyDown(KeyCode.Escape)))
             {

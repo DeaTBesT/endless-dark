@@ -14,7 +14,7 @@ namespace Player
 
             if (_playerInventory != null)
             {
-                _inventorySystem = _playerInventory.GetInventorySystem;
+                _inventorySystem = _playerInventory.GetPrimaryInventorySystem;
                 _inventorySystem.OnInventorySlotChanged += UpdateSlot;
             }
             else

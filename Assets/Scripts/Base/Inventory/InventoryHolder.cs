@@ -7,15 +7,20 @@ namespace Inventory
     public class InventoryHolder : NetworkBehaviour
     {
         [SerializeField] private int _inventorySize;
-        [SerializeField] protected InventorySystem _inventorySystem;
+        [SerializeField] protected InventorySystem _primaryInventorySystem;
 
-        public InventorySystem GetInventorySystem => _inventorySystem;
+        public InventorySystem GetPrimaryInventorySystem => _primaryInventorySystem;
 
         public static UnityAction<InventorySystem> OnDynamicInventoryDisplayRequested;
         
-        public void Initialize()
+        public override void OnStartClient()
         {
-            _inventorySystem = new InventorySystem(_inventorySize);
+            Initialize();
+        }
+        
+        public virtual void Initialize()
+        {
+            _primaryInventorySystem = new InventorySystem(_inventorySize);
         }
     }
 }

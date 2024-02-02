@@ -1,9 +1,9 @@
-using Mirror;
+using Interaction;
 
 namespace Base
 {
-    public class EntityInteraction : NetworkBehaviour
+    public class EntityInteraction : Interactor
     {
-
+        
     }
 }

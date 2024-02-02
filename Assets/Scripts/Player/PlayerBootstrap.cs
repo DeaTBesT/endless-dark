@@ -1,5 +1,6 @@
 using Base;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -7,8 +8,8 @@ namespace Player
     {
         [SerializeField] private PlayerMove _playerMove;
         [SerializeField] private PlayerCamera _playerCamera;
-        [SerializeField] private PlayerInteract _playerInteract;
-        [SerializeField] private PlayerInventory _playerInventory;
+        [SerializeField] private PlayerInteraction playerInteraction;
+        [FormerlySerializedAs("_playerInventory")] [SerializeField] private PlayerInventoryHolder playerInventoryHolder;
         
         [Space]
         [SerializeField] private Camera _camera;
@@ -21,8 +22,8 @@ namespace Player
             
             _playerMove.Initialize(_input);
             _playerCamera.Initialize(_playerMove, _camera);
-            _playerInteract.Initialize(_camera);
-            _playerInventory.Initialize();
+            playerInteraction.Initialize(_camera);
+            playerInventoryHolder.Initialize();
         }
 
         public override void OnStopClient()

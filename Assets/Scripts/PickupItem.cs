@@ -9,9 +9,9 @@ public class PickupItem : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out InventoryHolder playerInventory))
+        if (other.TryGetComponent(out PlayerInventoryHolder playerInventory))
         {
-            if (playerInventory.GetInventorySystem.AddToInventory(_itemData, 1))
+            if (playerInventory.AddToInventory(_itemData, 1))
             {
                 Destroy(gameObject);
             }
