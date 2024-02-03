@@ -6,11 +6,11 @@ My pet project. 2D top-down game like rpg.
 # 🚀Installation
 Last stable build.
 ```
-git clone --branch release https://github.com/DeaTBesT/endless-dark.git
+Link to stable build
 ```
 ⚠️The newest unstable build.
 ```
-git clone --branch develop https://github.com/DeaTBesT/endless-dark.git
+Link to unstable build
 ```
 # ⚙️Stack
 <summary>C#</summary>
